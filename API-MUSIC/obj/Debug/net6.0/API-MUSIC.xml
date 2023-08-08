@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API-MUSIC</name>
+    </assembly>
+    <members>
+        <member name="M:API_MUSIC.Controllers.MusicController.CadadastrarArtista(API_MUSIC.Data.Dtos.CreateArtistDto)">
+            <summary>
+            Adciona um artista ao banco de dados 
+            </summary>
+            <param name="artistDto"> Objeto com os campos necessários para criação de um filme </param>
+            <returns>IActionResult </returns>
+            <response code="201"> Caso a inserção seja feita com sucessp </response>
+        </member>
+        <member name="M:API_MUSIC.Controllers.MusicController.VisualizarArtistaPeloNome(System.String)">
+            <summary>
+            Retorna a visualização do artista 
+            </summary>
+            <param string="name"> Obrigatorio informar o nome do artista </param>
+            <returns>IActionResult </returns>
+            <response code="200"> Sucesso </response>
+        </member>
+        <member name="M:API_MUSIC.Controllers.MusicController.AlterarAlgunsDadosDoArtista(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{API_MUSIC.Data.Dtos.UpdateArtistDto})">
+            <summary>
+            Alterar somente alguns dados do artista
+            </summary>
+            <param name="name"> Obrigatorio informar o nome do artista que deseja alterar dados</param>
+            <param name="patch"> Os seguintes dados que deseja alterar </param>
+            <returns>IActionResult </returns>
+            <response code="204"> Dados Alterados Com Sucesso</response>
+        </member>
+        <member name="M:API_MUSIC.Controllers.MusicController.AlterarTodosDadosDoArtist(System.String,API_MUSIC.Data.Dtos.UpdateArtistDto)">
+            <summary>
+            Alterar todos dados do Artista
+            </summary>
+            <param name="name"> Obrigatorio informar o nome do artista para fazer alteração</param>
+            <param name="artistDto"> Dados que serão utilizados para fazer alteração</param>
+            <returns> IActionResult</returns>
+            <response code="204"> Dados Alterados Com Sucesso</response>
+        </member>
+        <member name="M:API_MUSIC.Controllers.MusicController.ExcluirArtista(System.String)">
+            <summary>
+            Excluir artista do banco de dados
+            </summary>
+            <param name="name"> Obrigatorio informar o nome do artista para fazer exclusão</param>
+            <returns> IActionResult</returns>
+            <response code="204"> Dados Excluidos Com Sucesso</response>
+        </member>
+        <member name="M:API_MUSIC.Controllers.MusicController.CadastrarMusica(API_MUSIC.Data.Dtos.CreateMusicDto)">
+            <summary>
+            Cadastra uma musica no banco de dados
+            </summary>
+            <param name="music"> Obrigatorio preenchemento dos campos</param>
+            <returns> IActionResult</returns>
+            <response code="201"> Musica cadastrada </response> 
+        </member>
+        <member name="M:API_MUSIC.Controllers.MusicController.VisualizarMusicaPeloTitulo(System.String)">
+            <summary>
+            Visualizar a musica cadastrada
+            </summary>
+            <param name="title"> Obrigatorio Informar o nome da musica</param>
+            <returns> IActionResult</returns>
+            <response code="200"> Sucesso </response>>
+        </member>
+        <member name="M:API_MUSIC.Controllers.MusicController.ListaDeMusic(System.Int32,System.Int32)">
+            <summary>
+            Visualizar lista de musica
+            </summary>
+            <param name="skip"> Obrigatorio informar o número de página que deseja pular</param>
+            <param name="take"> Obrigatorio informar o número de página que deseja selecionar</param>
+            <returns>IActionResult</returns>
+            <response code="200"> Sucesso </response>>
+        </member>
+        <member name="M:API_MUSIC.Controllers.MusicController.AlterarDados(System.String,API_MUSIC.Data.Dtos.UpdateMusicDto)">
+            <summary>
+            Alterar todos dados da musica
+            </summary>
+            <param name="title"> Obrigatorio informar o nome da musica</param>
+            <param name="musicaDto">Preenchimento de todos campos obrigatorios</param>
+            <returns>IActionResult</returns>
+            <response code="204"> Todos dados alterados com sucesso </response>
+        </member>
+        <member name="M:API_MUSIC.Controllers.MusicController.AlterandoAlgunsDadosArtist(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{API_MUSIC.Data.Dtos.UpdateMusicDto})">
+            <summary>
+            Alterar alguns dados da musica
+            </summary>
+            <param name="title"> Obrigatorio informar o nome da mmusica</param>
+            <param name="path"> Obrigatorio informar quais dados devem ser alterado</param>
+            <returns>IActionResult</returns>
+            <response code="204"> Dados alterados com sucesso </response>
+        </member>
+        <member name="M:API_MUSIC.Controllers.MusicController.ExcluirMusica(System.String)">
+            <summary>
+            Exluir musica da base de dados
+            </summary>
+            <param name="title"> Obrigatorio informar o nome da musica</param>
+            <returns>IActionResult</returns>
+            <response code="204"> Musica excluída com sucesso </response>
+        </member>
+    </members>
+</doc>

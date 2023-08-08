@@ -1,0 +1,4 @@
+Add-Migration Upando -Context "Coloque o nome da classe que tem context" <= Utilizar este comando que tiver mais de uma tabela
+Update-database -Context "Coloque o nome da classe que tem context" <= Para atualizar no banco de dado;
+
+// Ideia para melhorar a consulta para retornar musicas ou artitas (envolve query sql %)
