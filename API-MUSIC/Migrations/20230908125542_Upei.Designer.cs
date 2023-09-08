@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace API_MUSIC.Migrations.Artist
+namespace API_MUSIC.Migrations
 {
-    [DbContext(typeof(ArtistContext))]
-    [Migration("20230727003030_Upando")]
-    partial class Upando
+    [DbContext(typeof(IMusicContext))]
+    [Migration("20230908125542_Upei")]
+    partial class Upei
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,7 +40,36 @@ namespace API_MUSIC.Migrations.Artist
 
                     b.HasKey("IdArtist");
 
-                    b.ToTable("artist");
+                    b.ToTable("Artists");
+                });
+
+            modelBuilder.Entity("API_MUSIC.Controllers.Models.Music", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Compositor")
+                        .IsRequired()
+                        .HasMaxLength(35)
+                        .HasColumnType("varchar(35)");
+
+                    b.Property<double>("Duration")
+                        .HasColumnType("double");
+
+                    b.Property<string>("Letter")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Music");
                 });
 #pragma warning restore 612, 618
         }

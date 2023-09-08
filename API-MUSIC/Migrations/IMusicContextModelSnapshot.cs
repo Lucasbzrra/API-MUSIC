@@ -2,23 +2,44 @@
 using API_MUSIC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
 namespace API_MUSIC.Migrations
 {
-    [DbContext(typeof(MusicContext))]
-    [Migration("20230727002914_Upando")]
-    partial class Upando
+    [DbContext(typeof(IMusicContext))]
+    partial class IMusicContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("API_MUSIC.Controllers.Models.Artist", b =>
+                {
+                    b.Property<int>("IdArtist")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("StyleMusic")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Yearofbirth")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdArtist");
+
+                    b.ToTable("Artists");
+                });
 
             modelBuilder.Entity("API_MUSIC.Controllers.Models.Music", b =>
                 {

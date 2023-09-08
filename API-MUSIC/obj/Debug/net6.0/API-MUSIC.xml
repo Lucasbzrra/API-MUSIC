@@ -4,7 +4,7 @@
         <name>API-MUSIC</name>
     </assembly>
     <members>
-        <member name="M:API_MUSIC.Controllers.MusicController.CadadastrarArtista(API_MUSIC.Data.Dtos.CreateArtistDto)">
+        <member name="M:API_MUSIC.Controllers.ArtistController.CadadastrarArtista(API_MUSIC.Data.Dtos.CreateArtistDto)">
             <summary>
             Adciona um artista ao banco de dados 
             </summary>
@@ -12,7 +12,7 @@
             <returns>IActionResult </returns>
             <response code="201"> Caso a inserção seja feita com sucessp </response>
         </member>
-        <member name="M:API_MUSIC.Controllers.MusicController.VisualizarArtistaPeloNome(System.String)">
+        <member name="M:API_MUSIC.Controllers.ArtistController.VisualizarArtistaPeloNome(System.String)">
             <summary>
             Retorna a visualização do artista 
             </summary>
@@ -20,7 +20,7 @@
             <returns>IActionResult </returns>
             <response code="200"> Sucesso </response>
         </member>
-        <member name="M:API_MUSIC.Controllers.MusicController.AlterarAlgunsDadosDoArtista(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{API_MUSIC.Data.Dtos.UpdateArtistDto})">
+        <member name="M:API_MUSIC.Controllers.ArtistController.AlterarAlgunsDadosDoArtista(System.String,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{API_MUSIC.Data.Dtos.UpdateArtistDto})">
             <summary>
             Alterar somente alguns dados do artista
             </summary>
@@ -29,7 +29,7 @@
             <returns>IActionResult </returns>
             <response code="204"> Dados Alterados Com Sucesso</response>
         </member>
-        <member name="M:API_MUSIC.Controllers.MusicController.AlterarTodosDadosDoArtist(System.String,API_MUSIC.Data.Dtos.UpdateArtistDto)">
+        <member name="M:API_MUSIC.Controllers.ArtistController.AlterarTodosDadosDoArtist(System.String,API_MUSIC.Data.Dtos.UpdateArtistDto)">
             <summary>
             Alterar todos dados do Artista
             </summary>
@@ -38,7 +38,7 @@
             <returns> IActionResult</returns>
             <response code="204"> Dados Alterados Com Sucesso</response>
         </member>
-        <member name="M:API_MUSIC.Controllers.MusicController.ExcluirArtista(System.String)">
+        <member name="M:API_MUSIC.Controllers.ArtistController.ExcluirArtista(System.String)">
             <summary>
             Excluir artista do banco de dados
             </summary>

@@ -1,4 +1,7 @@
 using API_MUSIC.Data;
+using API_MUSIC.Data.EfCore;
+using API_MUSIC.Services;
+using API_MUSIC.Services.Handlers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -7,13 +10,22 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-    var MusicConnectionstring = builder.Configuration.GetConnectionString("MusicConncetion");
-    var ArtistaConncetionstring = builder.Configuration.GetConnectionString("artistconncetion");
+var MusicConnectionstring = builder.Configuration.GetConnectionString("MusicConncetion");
+//var ArtistaConncetionstring = builder.Configuration.GetConnectionString("artistconncetion");
+//builder.Services.AddDbContext<ArtistContext>(opts => opts.UseMySql(ArtistaConncetionstring, ServerVersion.AutoDetect(ArtistaConncetionstring)));    
 
-
-    builder.Services.AddDbContext<MusicContext>(opts => opts.UseMySql(MusicConnectionstring, ServerVersion.AutoDetect(MusicConnectionstring)));
-    builder.Services.AddDbContext<ArtistContext>(opts => opts.UseMySql(ArtistaConncetionstring, ServerVersion.AutoDetect(ArtistaConncetionstring)));
+builder.Services.AddDbContext<IMusicContext>(opts => opts.UseMySql(MusicConnectionstring, ServerVersion.AutoDetect(MusicConnectionstring)));
     builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+    builder.Services.AddScoped<ArtistDaoComEfCore>();
+    builder.Services.AddScoped<MusicDaoComEfCore>();
+    // O asp net passando o parâmetro para o construtor na linha 18 Da Controle Music -DIP
+    builder.Services.AddTransient<IMusicDao,MusicDaoComEfCore>();
+    // O asp net passando o parâmetro para o construtor na linha 15 Da Controle Artist -DIP
+    builder.Services.AddTransient<IArtistDaocs, ArtistDaoComEfCore>();
+    // O asp net passando o parâmetro para o construtor na linha 16 Da Controle Artist -OCP
+    builder.Services.AddTransient<IAdminServices,DefaultAdminService>();
+    // O asp net passando o parâmetro para o construtor na linha 18 Da Controle Artist -OCP
+    builder.Services.AddTransient<IProductService, DefaultAdminProduct>();
 
 
 

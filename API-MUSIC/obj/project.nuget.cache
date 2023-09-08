@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "xiLaey3jFAdvxlqlxlEC7ayMSKEHcAZQ8FqyP1rPQYMCMuZk39tYttJ4Ia/Qb+ol9RVQdwaQNawKF3xD3kLOkA==",
+  "dgSpecHash": "ophW8VOwI45zciIRyyFoLLGl6CQWEQhoZhnsjKnG2iBYUGnxdHabezcEZAX6DZgNvVe8Ud9c07kL1N1TC3LnZw==",
   "success": true,
   "projectFilePath": "C:\\Users\\lucas\\source\\repos\\API-MUSIC\\API-MUSIC\\API-MUSIC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lucas\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\lucas\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\lucas\\.nuget\\packages\\azure.core\\1.34.0\\azure.core.1.34.0.nupkg.sha512",
+    "C:\\Users\\lucas\\.nuget\\packages\\fluentassertions\\6.12.0\\fluentassertions.6.12.0.nupkg.sha512",
     "C:\\Users\\lucas\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\lucas\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\7.0.9\\microsoft.aspnetcore.jsonpatch.7.0.9.nupkg.sha512",
     "C:\\Users\\lucas\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\6.0.10\\microsoft.aspnetcore.mvc.newtonsoftjson.6.0.10.nupkg.sha512",

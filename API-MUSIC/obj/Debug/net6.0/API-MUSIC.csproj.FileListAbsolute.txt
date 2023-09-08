@@ -79,3 +79,4 @@ C:\Users\lucas\source\repos\API-MUSIC\API-MUSIC\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\lucas\source\repos\API-MUSIC\API-MUSIC\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\lucas\source\repos\API-MUSIC\API-MUSIC\bin\Debug\net6.0\API-MUSIC.xml
 C:\Users\lucas\source\repos\API-MUSIC\API-MUSIC\obj\Debug\net6.0\API-MUSIC.xml
+C:\Users\lucas\source\repos\API-MUSIC\API-MUSIC\bin\Debug\net6.0\FluentAssertions.dll
