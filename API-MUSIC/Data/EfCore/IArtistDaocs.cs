@@ -1,4 +1,5 @@
 ﻿using API_MUSIC.Controllers.Models;
+using API_MUSIC.Data.Dtos;
 
 namespace API_MUSIC.Data.EfCore;
 /*
@@ -8,10 +9,11 @@ public interface IArtistDaocs
 {
      Artist ConsultarArtistaPeloNome1(string name);
 
-     void CadastrarNoBanco(Artist Artist);
+    List<Artist> RetornarMusicasDoArtist(int? id);
+    void CadastrarNoBanco(Artist Artist);
 
      void RemoveNoBanco(Artist artist);
-
-     void SalvaAlteracoesFeitas();
+    Artist QueryMyAddress(int id);
+    void SalvaAlteracoesFeitas();
 
 }

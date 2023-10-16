@@ -23,4 +23,14 @@ public class Music
     [Required]
     [StringLength(35)]
     public string Compositor { get; set; }
+
+
+    // relação de [1] do relacionamento de entidades [1:n]
+
+    [Required]
+    
+    public int ArtistID { get; set; }
+    [Newtonsoft.Json.JsonIgnore]
+    public virtual Artist Artist { get; set; }
+
 }

@@ -1,4 +1,7 @@
 ﻿using API_MUSIC.Controllers.Models;
+using API_MUSIC.Data.Dtos;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace API_MUSIC.Data.EfCore;
 
@@ -73,4 +76,5 @@ public class MusicDaoComEfCore : IMusicDao /// <== DIP (Interface)
         _musicContext.Music.Remove(music);
         SalvarAlteracoes();
     }
+    
 }

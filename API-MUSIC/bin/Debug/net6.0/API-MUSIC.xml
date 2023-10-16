@@ -46,6 +46,12 @@
             <returns> IActionResult</returns>
             <response code="204"> Dados Excluidos Com Sucesso</response>
         </member>
+        <member name="P:API_MUSIC.Controllers.Models.Address.Artist">
+            Criando relacionamento [:1]
+        </member>
+        <member name="P:API_MUSIC.Controllers.Models.Artist.AddressID">
+            Relação [n] (relacionamento de entidade)
+        </member>
         <member name="M:API_MUSIC.Controllers.MusicController.CadastrarMusica(API_MUSIC.Data.Dtos.CreateMusicDto)">
             <summary>
             Cadastra uma musica no banco de dados
@@ -96,6 +102,82 @@
             <param name="title"> Obrigatorio informar o nome da musica</param>
             <returns>IActionResult</returns>
             <response code="204"> Musica excluída com sucesso </response>
+        </member>
+        <member name="P:API_MUSIC.Data.Dtos.CreateAndressDto.Artist">
+            Criando relacionamento [:1]
+        </member>
+        <member name="T:API_MUSIC.Data.EfCore.ArtistDaoComEfCore">
+            <summary>
+            Classe que implementa a interface IArtistDao para acessar e maipular artisttas usando Entity Framework.
+            </summary>
+        </member>
+        <member name="M:API_MUSIC.Data.EfCore.ArtistDaoComEfCore.#ctor(API_MUSIC.Data.IMusicContext)">
+            <summary>
+            Contrustor que recebe um contexto de banco de dados IMusicContext para ser usado para operações de banco de dados.
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:API_MUSIC.Data.EfCore.ArtistDaoComEfCore.ConsultarArtistaPeloNome1(System.String)">
+            <summary>
+            Consulta artista pelo name do banco de dados
+            </summary>
+            <param name="name"> o nome do artista a ser consultado</param>
+            <returns> O artista encontrado ou null se não encontrado</returns>
+        </member>
+        <member name="M:API_MUSIC.Data.EfCore.ArtistDaoComEfCore.CadastrarNoBanco(API_MUSIC.Controllers.Models.Artist)">
+            <summary>
+            Adiciona um novo artista ao banco de dados
+            </summary>
+            <param name="Artist"> O artista a ser cadastrado</param>
+        </member>
+        <member name="M:API_MUSIC.Data.EfCore.ArtistDaoComEfCore.RemoveNoBanco(API_MUSIC.Controllers.Models.Artist)">
+            <summary>
+            Remover o artista ao banco de dados
+            </summary>
+            <param name="artist"> O artista a ser removido</param>
+        </member>
+        <member name="M:API_MUSIC.Data.EfCore.ArtistDaoComEfCore.SalvaAlteracoesFeitas">
+            <summary>
+            Salva as alterações feitas no banco
+            </summary>
+        </member>
+        <member name="M:API_MUSIC.Data.EfCore.MusicDaoComEfCore.#ctor(API_MUSIC.Data.IMusicContext)">
+            <summary>
+            Construtor que recebe um contexto de banco de dados IMusicContext para ser usado para operações de banco de dados.
+            </summary>
+            <param name="context">O contexto do banco de dados.</param>
+        </member>
+        <member name="M:API_MUSIC.Data.EfCore.MusicDaoComEfCore.BuscarListaDeMusicas(System.Int32,System.Int32)">
+            <summary>
+            Busca uma lista de músicas com paginação.
+            </summary>
+            <param name="skip">O número de registros a serem ignorados.</param>
+            <param name="take">O número de registros a serem retornados.</param>
+            <returns>Uma coleção de músicas.</returns>
+        </member>
+        <member name="M:API_MUSIC.Data.EfCore.MusicDaoComEfCore.ProcurarMusciaPeloTitle1(System.String)">
+            <summary>
+            Procura uma música pelo título no banco de dados.
+            </summary>
+            <param name="title">O título da música a ser procurada.</param>
+            <returns>A música encontrada ou null se não encontrada.</returns>
+        </member>
+        <member name="M:API_MUSIC.Data.EfCore.MusicDaoComEfCore.CadastrarMusicaNoBanco(API_MUSIC.Controllers.Models.Music)">
+            <summary>
+            Cadastra uma nova música no banco de dados.
+            </summary>
+            <param name="music">A música a ser cadastrada.</param>
+        </member>
+        <member name="M:API_MUSIC.Data.EfCore.MusicDaoComEfCore.SalvarAlteracoes">
+            <summary>
+            Salva todas as alterações feitas no contexto do banco de dados.
+            </summary>
+        </member>
+        <member name="M:API_MUSIC.Data.EfCore.MusicDaoComEfCore.RemoverMusic(API_MUSIC.Controllers.Models.Music)">
+            <summary>
+            Remove uma música do banco de dados.
+            </summary>
+            <param name="music">A música a ser removida.</param>
         </member>
     </members>
 </doc>

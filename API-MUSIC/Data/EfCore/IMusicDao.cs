@@ -16,5 +16,6 @@ public interface IMusicDao
     void SalvarAlteracoes();
 
     void RemoverMusic(Music music);
-    
+   
+
 }

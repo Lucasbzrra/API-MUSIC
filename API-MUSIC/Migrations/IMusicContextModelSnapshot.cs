@@ -18,10 +18,39 @@ namespace API_MUSIC.Migrations
                 .HasAnnotation("ProductVersion", "6.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("API_MUSIC.Controllers.Models.Address", b =>
+                {
+                    b.Property<int>("IdAddress")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Cep")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("varchar(8)");
+
+                    b.Property<string>("Complemento")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasMaxLength(2)
+                        .HasColumnType("varchar(2)");
+
+                    b.HasKey("IdAddress");
+
+                    b.ToTable("Addresse_Artists");
+                });
+
             modelBuilder.Entity("API_MUSIC.Controllers.Models.Artist", b =>
                 {
                     b.Property<int>("IdArtist")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("AddressID")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -38,6 +67,9 @@ namespace API_MUSIC.Migrations
 
                     b.HasKey("IdArtist");
 
+                    b.HasIndex("AddressID")
+                        .IsUnique();
+
                     b.ToTable("Artists");
                 });
 
@@ -45,6 +77,9 @@ namespace API_MUSIC.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("ArtistID")
                         .HasColumnType("int");
 
                     b.Property<string>("Compositor")
@@ -67,7 +102,41 @@ namespace API_MUSIC.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ArtistID");
+
                     b.ToTable("Music");
+                });
+
+            modelBuilder.Entity("API_MUSIC.Controllers.Models.Artist", b =>
+                {
+                    b.HasOne("API_MUSIC.Controllers.Models.Address", "Address")
+                        .WithOne("Artist")
+                        .HasForeignKey("API_MUSIC.Controllers.Models.Artist", "AddressID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Address");
+                });
+
+            modelBuilder.Entity("API_MUSIC.Controllers.Models.Music", b =>
+                {
+                    b.HasOne("API_MUSIC.Controllers.Models.Artist", "Artist")
+                        .WithMany("Musics")
+                        .HasForeignKey("ArtistID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Artist");
+                });
+
+            modelBuilder.Entity("API_MUSIC.Controllers.Models.Address", b =>
+                {
+                    b.Navigation("Artist");
+                });
+
+            modelBuilder.Entity("API_MUSIC.Controllers.Models.Artist", b =>
+                {
+                    b.Navigation("Musics");
                 });
 #pragma warning restore 612, 618
         }

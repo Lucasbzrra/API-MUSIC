@@ -41,6 +41,7 @@ public class MusicController:ControllerBase
     }
 
 
+   
     /// <summary>
     /// Visualizar a musica cadastrada
     /// </summary>
@@ -76,7 +77,7 @@ public class MusicController:ControllerBase
     {
         //return mapper.Map<List<ReadMusicDto>>(_daoMusic.BuscarListaDeMusicas(skip,take));
         var ListaMusicas=ServiceProduct.ProcurarMusicas(skip, take);
-        return mapper.Map<List<ReadMusicDto>>(ListaMusicas);
+        return mapper.Map<List<ReadMusicDto>>(ListaMusicas).ToList();
     }
     /// <summary>
     /// Alterar todos dados da musica

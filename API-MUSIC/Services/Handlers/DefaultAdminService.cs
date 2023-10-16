@@ -25,6 +25,22 @@ public class DefaultAdminService : IAdminServices //<== Utilizando o PRINCIPIO O
     {
         _dao.RemoveNoBanco(artist);
     }
+
+    public Artist retornarEndereco(int id)
+    {
+        return  _dao.QueryMyAddress(id);
+    }
+
+    public List<Artist> RetornarMusicasDoArtist(int? id)
+    {
+        return _dao.RetornarMusicasDoArtist(id);
+    }
+
+    //public Music RetornandoMusicasDoArtista(string name)
+    //{
+    //    _dao.;
+    //}
+
     public void SalvarModificacoes()
     {
         _dao.SalvaAlteracoesFeitas();

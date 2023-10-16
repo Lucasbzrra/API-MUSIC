@@ -13,10 +13,12 @@ public class ArtistController: ControllerBase
     //private IArtistDaocs _daoArtist; <== Após utilizar o principio, não será mais necessário 
     private IAdminServices Service; //<== Utilizando o PRINCIPIO OCP
     private IMapper mapper;
-    public ArtistController(IMapper _mapper, IAdminServices service )
+    private IProductService Product;
+    public ArtistController(IMapper _mapper, IAdminServices service,IProductService  product)
     {
         mapper = _mapper;
         Service = service;
+        Product = product;
     }
 
     /// <summary>
@@ -31,6 +33,7 @@ public class ArtistController: ControllerBase
     {
         //bool ArtistaEncontrado = _daoArtist.ConsultarArtistaPeloNome(artistDto.Name); 
         var ArtistaEncontrado = Service.ConsultaArtistaPeloNomeVar(artistDto.Name); //<== Utilizando o PRINCIPIO OCP
+       
 
         if (ArtistaEncontrado!=null)
         {
@@ -149,7 +152,35 @@ public class ArtistController: ControllerBase
 
         return NoContent();
     }
+    //TESTANDOO
+    [HttpGet("/VisualizarLista/{name}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IEnumerable<ReadOnlyArtist> Teste( string name)
+    {
+        var artista = Service.ConsultaArtistaPeloNomeVar(name);
+        if (artista == null) 
+        {
+           
+            return Enumerable.Empty<ReadOnlyArtist>(); 
+        }
+        
+        var ListaDeMusicasDoArtist = Service.RetornarMusicasDoArtist(artista.IdArtist);
 
+        var result = mapper.Map<List<ReadOnlyArtist>>(ListaDeMusicasDoArtist);
+       
+        return result;
+    }
+    [HttpGet("/VisualizarDadosCadastrais/{name}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult VisulizarEndereco(string name)
+    {
+        var EncontrarPeloName = Service.ConsultaArtistaPeloNomeVar(name);
+        if (EncontrarPeloName == null) { return NotFound($"Não existe este artista com esse nome ({name})"); }
+        var EncontrarAdress = Service.retornarEndereco(EncontrarPeloName.IdArtist);
+        ReadOnlyArtist artist =mapper.Map<ReadOnlyArtist>(EncontrarAdress);
+         return Ok(artist);
+        
+    }
 
 }
 

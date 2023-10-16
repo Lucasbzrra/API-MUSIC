@@ -30,6 +30,7 @@ public class DefaultAdminProduct : IProductService
        _musicDao.RemoverMusic(music);
     }
 
+
     public void SalvarAlteracoesEMoficicacoes()
     {
         _musicDao.SalvarAlteracoes();
