@@ -1,5 +1,5 @@
-﻿using API_MUSIC.Controllers.Models;
-using API_MUSIC.Data.EfCore;
+﻿using API_MUSIC.Data.EfCore;
+using API_MUSIC.Models;
 
 namespace API_MUSIC.Services.Handlers;
 
@@ -25,9 +25,9 @@ public class DefaultAdminProduct : IProductService
         return _musicDao.BuscarListaDeMusicas(skip, take);
     }
 
-    public void RemoverMusic(Music music)
+    public void RemoverMusic(Music music, string id)
     {
-       _musicDao.RemoverMusic(music);
+       _musicDao.RemoverMusic(music,id);
     }
 
 

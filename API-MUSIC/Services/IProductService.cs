@@ -1,4 +1,4 @@
-﻿using API_MUSIC.Controllers.Models;
+﻿using API_MUSIC.Models;
 
 namespace API_MUSIC.Services;
 
@@ -11,7 +11,7 @@ public interface IProductService
 
     public void SalvarAlteracoesEMoficicacoes();
 
-    public void RemoverMusic(Music music);
+    public void RemoverMusic(Music music, string id);
 
     
 }

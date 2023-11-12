@@ -1,8 +1,8 @@
-﻿using API_MUSIC.Controllers.Models;
+﻿using API_MUSIC.Models;
 
 namespace API_MUSIC.Services;
 
-public interface IAdminServices //<== Utilizando o PRINCIPIO OCP
+public interface IArtistServices //<== Utilizando o PRINCIPIO OCP
 {
 
      Artist ConsultaArtistaPeloNomeVar(string name);
@@ -13,6 +13,6 @@ public interface IAdminServices //<== Utilizando o PRINCIPIO OCP
 
      void SalvarModificacoes();
 
-     void ExcluirAristaNoBanco(Artist artist);
+     void ExcluirAristaNoBanco(Artist artist, string token);
     //Music RetornandoMusicasDoArtista(string name);
 }

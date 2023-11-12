@@ -1,24 +1,26 @@
-﻿using API_MUSIC.Controllers.Models;
-using API_MUSIC.Data.EfCore;
+﻿using API_MUSIC.Data.EfCore;
+using API_MUSIC.Models;
 
 namespace API_MUSIC.Services.Handlers;
 
-public class RegistrationAdmin : IRegistrationAdmin
+public class RegistrationAddress : IRegistrationAddress
 {
     readonly IAddressDao _daoAdress;
-    public RegistrationAdmin(IAddressDao addressDao)
+    public RegistrationAddress(IAddressDao addressDao)
     {
         _daoAdress = addressDao;
     }
-    public void DeleteAndress(Address address)
+
+    public void DeleteAndress(Address address, string IdToken)
     {
-        _daoAdress.Remover(address);
+        _daoAdress.Remover(address, IdToken);
     }
 
     public Address QueryAndress(string cep)
     {
        return _daoAdress.ConsultarCep(cep);
     }
+
 
     public void RegistrationAdress(Address address)
     {

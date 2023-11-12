@@ -1,22 +1,16 @@
-﻿using API_MUSIC.Controllers.Models;
+﻿using API_MUSIC.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace API_MUSIC.Data;
 
-public class IMusicContext:DbContext
+public class IMusicContext :DbContext  ///<== Somente realizar add-migration na classe do UsersbdContext
 {
-    public IMusicContext(DbContextOptions<IMusicContext> options):base(options) { }
-    
-    //protected override void OnModeCreating(ModelBuilder model)
-    //{
-    //    model.Entity<RecordCompany>().HasKey(recordcompanies => new { recordcompanies.ArtistId, recordcompanies.MusicId });
-    //    model.Entity<RecordCompany>().HasKey(refrecordcompanies => new {refrecordcompanies})
-    //}
-    public DbSet<Music>  Music { get; set; }
+    //public IMusicContext(DbContextOptions<IMusicContext> options) : base(options) { }
 
-    public DbSet<Artist> Artists { get; set; }
+    //public DbSet<Music>  MUSIC { get; set; }
 
-    public DbSet<Address> Addresse_Artists { get; set; }
+    //public DbSet<Artist> ARTISTS { get; set; }
 
-    //public DbSet<RecordCompany> RecordCompanies { get; set; }
+    //public DbSet<Address> ADDRESSE_ARTISTS { get; set; }
+
 }

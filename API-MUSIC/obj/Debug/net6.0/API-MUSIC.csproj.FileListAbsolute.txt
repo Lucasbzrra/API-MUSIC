@@ -82,3 +82,12 @@ C:\Users\lucas\source\repos\API-MUSIC\API-MUSIC\obj\Debug\net6.0\API-MUSIC.xml
 C:\Users\lucas\source\repos\API-MUSIC\API-MUSIC\bin\Debug\net6.0\FluentAssertions.dll
 C:\Users\lucas\source\repos\API-MUSIC\API-MUSIC\bin\Debug\net6.0\Castle.Core.dll
 C:\Users\lucas\source\repos\API-MUSIC\API-MUSIC\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Proxies.dll
+C:\Users\lucas\source\repos\API-MUSIC\API-MUSIC\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\lucas\source\repos\API-MUSIC\API-MUSIC\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\lucas\source\repos\API-MUSIC\API-MUSIC\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\lucas\source\repos\API-MUSIC\API-MUSIC\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\lucas\source\repos\API-MUSIC\API-MUSIC\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\lucas\source\repos\API-MUSIC\API-MUSIC\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\lucas\source\repos\API-MUSIC\API-MUSIC\bin\Debug\net6.0\jose-jwt.dll
+C:\Users\lucas\source\repos\API-MUSIC\API-MUSIC\bin\Debug\net6.0\JWTDecoder.dll
+C:\Users\lucas\source\repos\API-MUSIC\API-MUSIC\bin\Debug\net6.0\System.ComponentModel.Composition.dll

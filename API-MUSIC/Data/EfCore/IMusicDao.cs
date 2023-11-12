@@ -1,4 +1,4 @@
-﻿using API_MUSIC.Controllers.Models;
+﻿using API_MUSIC.Models;
 
 namespace API_MUSIC.Data.EfCore;
 /*
@@ -15,7 +15,7 @@ public interface IMusicDao
 
     void SalvarAlteracoes();
 
-    void RemoverMusic(Music music);
+    void RemoverMusic(Music music, string id);
    
 
 }

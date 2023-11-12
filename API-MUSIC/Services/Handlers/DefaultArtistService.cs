@@ -1,12 +1,12 @@
-﻿using API_MUSIC.Controllers.Models;
-using API_MUSIC.Data.EfCore;
+﻿using API_MUSIC.Data.EfCore;
+using API_MUSIC.Models;
 
 namespace API_MUSIC.Services.Handlers;
 
-public class DefaultAdminService : IAdminServices //<== Utilizando o PRINCIPIO OCP
+public class DefaultArtistService : IArtistServices //<== Utilizando o PRINCIPIO OCP
 {
     readonly IArtistDaocs _dao;
-    public DefaultAdminService(IArtistDaocs dao)
+    public DefaultArtistService(IArtistDaocs dao)
     {
         _dao = dao;
     }
@@ -21,9 +21,9 @@ public class DefaultAdminService : IAdminServices //<== Utilizando o PRINCIPIO O
         return _dao.ConsultarArtistaPeloNome1(name);
     }
 
-    public void ExcluirAristaNoBanco(Artist artist)
+    public void ExcluirAristaNoBanco(Artist artist, string token)
     {
-        _dao.RemoveNoBanco(artist);
+        _dao.RemoveNoBanco(artist,token);
     }
 
     public Artist retornarEndereco(int id)

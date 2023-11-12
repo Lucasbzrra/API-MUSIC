@@ -1,12 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace API_MUSIC.Controllers.Models;
+namespace API_MUSIC.Models;
 
 public class Address /// <== Futuramente utilizar API de consulta CEP (GRATIS) para buscar os dados
 {
-    
+
     [Key]
     [Required]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -14,7 +15,7 @@ public class Address /// <== Futuramente utilizar API de consulta CEP (GRATIS) p
     [Required(ErrorMessage = "Tamanho máximo de 20 caracteres")]
     [StringLength(20)]
     public string Complemento { get; set; }
-    private List<char> Caracteres=new List<char>();
+    private List<char> Caracteres = new List<char>();
     private string _Cep { get; set; }
     [Required]
     [MinLength(8, ErrorMessage = "Tamanho de 8 caracteres ou Cep informando e invalido")]
@@ -30,9 +31,9 @@ public class Address /// <== Futuramente utilizar API de consulta CEP (GRATIS) p
                 if (char.IsDigit(value[i]))
                 {
                     Caracteres.Add(value[i]);
-                    
+
                 }
-               
+
             }
             if (Caracteres.Count == 8)
             {
@@ -47,7 +48,7 @@ public class Address /// <== Futuramente utilizar API de consulta CEP (GRATIS) p
 
     private string _Estado { get; set; }
 
-    [Required(ErrorMessage ="Coloque somente a sigla do Estado")]
+    [Required(ErrorMessage = "Coloque somente a sigla do Estado")]
     [MaxLength(2)]
     [MinLength(2)]
     public string Estado
@@ -58,8 +59,8 @@ public class Address /// <== Futuramente utilizar API de consulta CEP (GRATIS) p
         }
         set
         {
-            value=value.ToUpper();
-            if(ListEstados.Contains(value))
+            value = value.ToUpper();
+            if (ListEstados.Contains(value))
             {
                 _Estado = value;
             }
@@ -71,5 +72,5 @@ public class Address /// <== Futuramente utilizar API de consulta CEP (GRATIS) p
 
     /// Criando relacionamento [:1]
     [JsonIgnore]
-    public virtual Artist ? Artist  { get; set; }
+    public virtual Artist? Artist { get; set; }
 }

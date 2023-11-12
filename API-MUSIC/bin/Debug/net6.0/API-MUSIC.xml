@@ -4,6 +4,35 @@
         <name>API-MUSIC</name>
     </assembly>
     <members>
+        <member name="M:API_MUSIC.Controllers.AddressController.CadastrarAddress(API_MUSIC.Data.Dtos.CreateAndressDto)">
+            <summary>
+            Cadastra um novo endereço.
+            </summary>
+            <param name="addressDto">Dados do endereço a ser cadastrado.</param>
+            <returns>Retorna um objeto JSON representando o endereço recém-cadastrado.</returns>
+        </member>
+        <member name="M:API_MUSIC.Controllers.AddressController.ViewAdress(System.String)">
+            <summary>
+            Visualiza os detalhes de um endereço com base no CEP.
+            </summary>
+            <param name="cep">CEP do endereço a ser visualizado.</param>
+            <returns>Retorna um objeto JSON representando os detalhes do endereço.</returns>
+        </member>
+        <member name="M:API_MUSIC.Controllers.AddressController.DeleteAddress(System.String)">
+            <summary>
+            Remove um endereço com base no CEP.
+            </summary>
+            <param name="cep">CEP do endereço a ser removido.</param>
+            <returns>Retorna uma resposta sem conteúdo (204 No Content).</returns>
+        </member>
+        <member name="M:API_MUSIC.Controllers.AddressController.AlterarAllDate(System.String,API_MUSIC.Data.Dtos.UpdateAddressDto)">
+            <summary>
+            Atualiza todos os dados de um endereço com base no CEP.
+            </summary>
+            <param name="cep">CEP do endereço a ser atualizado.</param>
+            <param name="updateAddressDto">Dados atualizados do endereço.</param>
+            <returns>Retorna uma resposta sem conteúdo (204 No Content).</returns>
+        </member>
         <member name="M:API_MUSIC.Controllers.ArtistController.CadadastrarArtista(API_MUSIC.Data.Dtos.CreateArtistDto)">
             <summary>
             Adciona um artista ao banco de dados 
@@ -45,12 +74,6 @@
             <param name="name"> Obrigatorio informar o nome do artista para fazer exclusão</param>
             <returns> IActionResult</returns>
             <response code="204"> Dados Excluidos Com Sucesso</response>
-        </member>
-        <member name="P:API_MUSIC.Controllers.Models.Address.Artist">
-            Criando relacionamento [:1]
-        </member>
-        <member name="P:API_MUSIC.Controllers.Models.Artist.AddressID">
-            Relação [n] (relacionamento de entidade)
         </member>
         <member name="M:API_MUSIC.Controllers.MusicController.CadastrarMusica(API_MUSIC.Data.Dtos.CreateMusicDto)">
             <summary>
@@ -103,6 +126,20 @@
             <returns>IActionResult</returns>
             <response code="204"> Musica excluída com sucesso </response>
         </member>
+        <member name="M:API_MUSIC.Controllers.UserController.Cadastrar(API_MUSIC.Data.Dtos.CreateUserDto)">
+            <summary>
+            Controller que realiza o cadastramento do usuário
+            </summary>
+            <param name="createUserDto"> Dados necessários para realizar criação do usuário</param>
+            <returns> usuário cadastrado </returns>
+        </member>
+        <member name="M:API_MUSIC.Controllers.UserController.Login(API_MUSIC.Data.Dtos.LoginUsersDto)">
+            <summary>
+            Método que realiza o login do usuário
+            </summary>
+            <param name="loginUsersDto"> Dados necessários para realizar o login do usuário </param>
+            <returns></returns>
+        </member>
         <member name="P:API_MUSIC.Data.Dtos.CreateAndressDto.Artist">
             Criando relacionamento [:1]
         </member>
@@ -111,7 +148,7 @@
             Classe que implementa a interface IArtistDao para acessar e maipular artisttas usando Entity Framework.
             </summary>
         </member>
-        <member name="M:API_MUSIC.Data.EfCore.ArtistDaoComEfCore.#ctor(API_MUSIC.Data.IMusicContext)">
+        <member name="M:API_MUSIC.Data.EfCore.ArtistDaoComEfCore.#ctor(API_MUSIC.Data.UsersDbContext)">
             <summary>
             Contrustor que recebe um contexto de banco de dados IMusicContext para ser usado para operações de banco de dados.
             </summary>
@@ -124,13 +161,13 @@
             <param name="name"> o nome do artista a ser consultado</param>
             <returns> O artista encontrado ou null se não encontrado</returns>
         </member>
-        <member name="M:API_MUSIC.Data.EfCore.ArtistDaoComEfCore.CadastrarNoBanco(API_MUSIC.Controllers.Models.Artist)">
+        <member name="M:API_MUSIC.Data.EfCore.ArtistDaoComEfCore.CadastrarNoBanco(API_MUSIC.Models.Artist)">
             <summary>
             Adiciona um novo artista ao banco de dados
             </summary>
             <param name="Artist"> O artista a ser cadastrado</param>
         </member>
-        <member name="M:API_MUSIC.Data.EfCore.ArtistDaoComEfCore.RemoveNoBanco(API_MUSIC.Controllers.Models.Artist)">
+        <member name="M:API_MUSIC.Data.EfCore.ArtistDaoComEfCore.RemoveNoBanco(API_MUSIC.Models.Artist,System.String)">
             <summary>
             Remover o artista ao banco de dados
             </summary>
@@ -141,7 +178,7 @@
             Salva as alterações feitas no banco
             </summary>
         </member>
-        <member name="M:API_MUSIC.Data.EfCore.MusicDaoComEfCore.#ctor(API_MUSIC.Data.IMusicContext)">
+        <member name="M:API_MUSIC.Data.EfCore.MusicDaoComEfCore.#ctor(API_MUSIC.Data.UsersDbContext)">
             <summary>
             Construtor que recebe um contexto de banco de dados IMusicContext para ser usado para operações de banco de dados.
             </summary>
@@ -162,7 +199,7 @@
             <param name="title">O título da música a ser procurada.</param>
             <returns>A música encontrada ou null se não encontrada.</returns>
         </member>
-        <member name="M:API_MUSIC.Data.EfCore.MusicDaoComEfCore.CadastrarMusicaNoBanco(API_MUSIC.Controllers.Models.Music)">
+        <member name="M:API_MUSIC.Data.EfCore.MusicDaoComEfCore.CadastrarMusicaNoBanco(API_MUSIC.Models.Music)">
             <summary>
             Cadastra uma nova música no banco de dados.
             </summary>
@@ -173,11 +210,39 @@
             Salva todas as alterações feitas no contexto do banco de dados.
             </summary>
         </member>
-        <member name="M:API_MUSIC.Data.EfCore.MusicDaoComEfCore.RemoverMusic(API_MUSIC.Controllers.Models.Music)">
+        <member name="M:API_MUSIC.Data.EfCore.MusicDaoComEfCore.RemoverMusic(API_MUSIC.Models.Music,System.String)">
             <summary>
             Remove uma música do banco de dados.
             </summary>
             <param name="music">A música a ser removida.</param>
+        </member>
+        <member name="P:API_MUSIC.Models.Address.Artist">
+            Criando relacionamento [:1]
+        </member>
+        <member name="P:API_MUSIC.Models.Artist.AddressID">
+            Relação [n] (relacionamento de entidade)
+        </member>
+        <member name="M:API_MUSIC.Services.Handlers.TokenService.GenerateToken(API_MUSIC.Models.User)">
+            <summary>
+            Método que realiza a criaçãod o token
+            </summary>
+            <param name="user"> dados necessários para criação</param>
+            <returns> retornar o token (cripitografado) do usuário </returns>
+        </member>
+        <member name="M:API_MUSIC.Services.Handlers.TokenService.TokenDecodeIdUser(System.String)">
+            <summary>
+            Método que descripitografa o token do usuário
+            </summary>
+            <param name="token"> passa o dado JWT token Bearer</param>
+            <returns> retorna a id do claim do token </returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:API_MUSIC.Services.UsuarioService.QueryUser(System.String)">
+            <summary>
+            Método que consulta o id do usuário
+            </summary>
+            <param name="id"> Campo necessário para consultar</param>
+            <returns> retorna o id do usuário</returns>
         </member>
     </members>
 </doc>

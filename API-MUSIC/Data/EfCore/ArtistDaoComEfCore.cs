@@ -1,4 +1,4 @@
-﻿using API_MUSIC.Controllers.Models;
+﻿using API_MUSIC.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,12 +19,12 @@ namespace API_MUSIC.Data.EfCore;
 /// </summary>
 public class ArtistDaoComEfCore : IArtistDaocs /// <== DIP (Interface)
 {
-    private IMusicContext _artistContext;
+    private UsersDbContext _artistContext;
     /// <summary>
     /// Contrustor que recebe um contexto de banco de dados IMusicContext para ser usado para operações de banco de dados.
     /// </summary>
     /// <param name="context"></param>
-    public ArtistDaoComEfCore(IMusicContext context)
+    public ArtistDaoComEfCore(UsersDbContext context)
     {
         _artistContext = context;
     }
@@ -35,7 +35,7 @@ public class ArtistDaoComEfCore : IArtistDaocs /// <== DIP (Interface)
     /// <returns> O artista encontrado ou null se não encontrado</returns>
     public Artist ConsultarArtistaPeloNome1(string name)
     {
-        var ArtistaEncontrado = _artistContext.Artists.FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
+        var ArtistaEncontrado = _artistContext.ARTISTS.FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
         return ArtistaEncontrado;
     }
     /// <summary>
@@ -44,17 +44,27 @@ public class ArtistDaoComEfCore : IArtistDaocs /// <== DIP (Interface)
     /// <param name="Artist"> O artista a ser cadastrado</param>
     public void CadastrarNoBanco(Artist Artist)
     {
-        _artistContext.Artists.Add(Artist);
+        _artistContext.ARTISTS.Add(Artist);
         _artistContext.SaveChanges();
 
     }/// <summary>
-     /// Remover o artista ao banco de dados
+     /// Remover o artista ao banco de dados (Somente o proprio usuário que inseriu ou ADMIN)
      /// </summary>
      /// <param name="artist"> O artista a ser removido</param>
-    public void RemoveNoBanco(Artist artist)
+    public void RemoveNoBanco(Artist artist, string token)
     {
-        _artistContext.Artists.Remove(artist);
-        _artistContext.SaveChanges();
+        bool IsCreator = _artistContext.ARTISTS.Any(x => x.UserID.Equals(token));
+        bool IsAdmin = _artistContext.ADMINISTRATORS.Any(x => x.IdUser.Equals(token));
+        if (IsCreator || IsAdmin)
+        {
+            _artistContext.ARTISTS.Remove(artist);
+            _artistContext.SaveChanges();
+        }
+        else
+        {
+            throw new Exception("O usuário não tem relação com este artist ou não e ADMIN");
+        }
+        
 
     }
     /// <summary>
@@ -68,7 +78,7 @@ public class ArtistDaoComEfCore : IArtistDaocs /// <== DIP (Interface)
     public List<Artist> RetornarMusicasDoArtist([FromQuery] int? id)
     {
 
-        var ListaDeMusicasDoArtist = _artistContext.Artists.FromSqlRaw($"select * from artists A where A.IdArtist={id}");
+        var ListaDeMusicasDoArtist = _artistContext.ARTISTS.FromSqlRaw($"select * from artists A where A.IdArtist={id}");
         //Error está no PORFILEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 
 
@@ -89,7 +99,7 @@ public class ArtistDaoComEfCore : IArtistDaocs /// <== DIP (Interface)
     public Artist QueryMyAddress( int id)
     {
         // Consulta o contexto do artista para obter informações, incluindo detalhes de endereço.
-        var query =_artistContext.Artists.Include(x => x.Address).FirstOrDefault(x=>x.IdArtist== id);
+        var query =_artistContext.ARTISTS.Include(x => x.Address).FirstOrDefault(x=>x.IdArtist== id);
         // Retorna o resultado da consulta.
         return query;
     }

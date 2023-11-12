@@ -1,4 +1,4 @@
-﻿using API_MUSIC.Controllers.Models;
+﻿using API_MUSIC.Models;
 
 namespace API_MUSIC.Data.Dtos;
 

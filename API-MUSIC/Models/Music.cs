@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
-namespace API_MUSIC.Controllers.Models;
+namespace API_MUSIC.Models;
 
 public class Music
 {
@@ -9,11 +9,11 @@ public class Music
     [Required]
     public int Id { get; set; }
 
-    [Required(ErrorMessage ="A Duracao da musica somente pode ficar entre 1.5 até 5.5")]
-    [Range(1.5,5.5)]
+    [Required(ErrorMessage = "A Duracao da musica somente pode ficar entre 1.5 até 5.5")]
+    [Range(1.5, 5.5)]
     public double Duration { get; set; }
 
-    [Required(ErrorMessage ="O titulo da musica somente pode ser até 20 caracteres")]
+    [Required(ErrorMessage = "O titulo da musica somente pode ser até 20 caracteres")]
     [StringLength(20)]
     public string Title { get; set; }
 
@@ -28,9 +28,9 @@ public class Music
     // relação de [1] do relacionamento de entidades [1:n]
 
     [Required]
-    
+
     public int ArtistID { get; set; }
-    [Newtonsoft.Json.JsonIgnore]
+    [JsonIgnore]
     public virtual Artist Artist { get; set; }
 
 }

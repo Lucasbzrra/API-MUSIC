@@ -1,4 +1,4 @@
-﻿using API_MUSIC.Controllers.Models;
+﻿using API_MUSIC.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -40,4 +40,7 @@ public class CreateArtistDto
     public virtual ICollection<Music>? Musics { get; set; }
     
     public int AddressID { get; set; }
+
+    public string UserID { get; set; }
+
 }
